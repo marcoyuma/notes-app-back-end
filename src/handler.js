@@ -165,5 +165,6 @@ module.exports = {
     addNoteHandler, 
     getAllNotesHandler, 
     getNoteByIdHandler, 
-    editNoteByIdHandler 
-    };
+    editNoteByIdHandler,
+    deleteNoteByIdHandler
+};

@@ -2,7 +2,8 @@ const Hapi = require('@hapi/hapi');
 const { addNoteHandler, 
     getAllNotesHandler, 
     getNoteByIdHandler, 
-    editNoteByIdHandler 
+    editNoteByIdHandler, 
+    deleteNoteByIdHandler
 } = require('./handler');
 
 /** anotasi JSDOC
@@ -32,7 +33,7 @@ const routes = [
     {
         method : 'DELETE',
         path : '/notes/{id}',
-        handler : 
+        handler : deleteNoteByIdHandler
     }
 
 ];
