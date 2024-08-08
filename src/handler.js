@@ -122,10 +122,41 @@ const editNoteByIdHandler = (request, h) => {
         message : 'gagal memperbarui catatan. id tidak ditemukan'
     });
     response.code(404);
-    return response;
+    return response;   
+}
 
 
-    
+/**
+ * @param {Hapi.Request} request
+ * @param {Hapi.ResponseToolkit} h
+ */
+// fungsi untuk delete notes
+const deleteNoteByIdHandler = (request, h) => {
+    // dapatkan nilai id
+    const {id} = request.params;
+
+    // dapatkan index
+    const index = notes.findIndex((note) => note.id === id)
+
+    // utk mengapus nilai array mengguanakn index. gunakan method array splice
+    if (index !== -1){
+        notes.splice(index, 1);
+
+        const response = h.response({
+            status : 'success',
+            message : 'catatan berhasil dihapus'
+        });
+        response.code(200);
+        return response;
+    }
+
+    // bila index bernilai -1, return fail
+    const response = h.response({
+        status : 'fail',
+        message : 'catatan gagal dihapus'
+    });
+    response.code(404);
+    return response
 }
 
 
